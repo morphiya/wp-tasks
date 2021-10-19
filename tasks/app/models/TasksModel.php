@@ -13,7 +13,8 @@ class TasksModel implements \SplSubject
 		'id'	=> '',
 		'name'	=> '',
 		'dueDate' => '',
-		'state'	=> ''
+		'state'	=> '',
+		'listTasks' => []
 	];
 	private \SplObjectStorage $observers;
 
@@ -41,6 +42,12 @@ class TasksModel implements \SplSubject
 		$this->notify();
 	}
 
+	public function listTask() {
+		$this->selectTask();
+		$this->modelState['page'] = 'list';
+		$this->notify();
+	}
+
 	private function insertTask() {
 		$post_data = array(
 			'ID'		 => $this->modelState['id'],
@@ -50,9 +57,26 @@ class TasksModel implements \SplSubject
 			'post_author'=> 1,
 			'meta_input' => [
 				'dueDate' => $_POST['dueDate'],
-				'state'	  => 'not completed'
+				'state'	  => 'false'
 			]
 		);
 		wp_insert_post($post_data);
 	}
+
+	private function selectTask($id = '') {
+		$query = new \WP_Query(['post_type' => 'tasks']);
+
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			$result = get_post();
+			$this->modelState['listTasks'][] = [
+				'id' => $result->ID,
+				'name' => $result->post_title,
+				'dueDate' => get_post_meta($result->ID, 'dueDate', true),
+				'state' => get_post_meta($result->ID, 'state', true)
+			];
+		}
+	}
+
+
 }

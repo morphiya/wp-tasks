@@ -83,3 +83,12 @@ function filter_change_title_page( $title ){
 
 	return $title;
 }
+
+// displays task`s row in table list
+add_action('render_table_row', 'render_table_row_action');
+function render_table_row_action($args) {
+	foreach ($args['listTasks'] as $task => $values) {
+		get_template_part('templates/part-table-row', '', $values);
+	}
+
+}
