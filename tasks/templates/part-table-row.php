@@ -1,7 +1,7 @@
+
 <tr>
 	<td>
-		<a class="task-link" href="<?php echo get_site_url() . '/edit';
-		                                 $_POST['taskID'] = $args['id'];?>"><?php echo $args['name'];?></a>
+		<a class="task-link" href="<?php echo get_site_url() . '/edit/' . $args['id']; ?>"><?php echo $args['name'];?></a>
 	</td>
 	<td><?php echo $args['dueDate'];?></td>
 	<td>

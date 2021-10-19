@@ -66,9 +66,10 @@ function create_route_action() {
 	}
 	else {
 		$controllerName = 'app\controllers\\' . ucfirst($requestURI[1]) . 'Controller';
+		$param = $requestURI[2] ?? '';
 		try {
 			$controller = new $controllerName();
-			$controller->createPage();
+			$controller->createPage($param);
 		} catch (\app\TasksException $e) {
 			get_template_part('templates/content-404');
 		}

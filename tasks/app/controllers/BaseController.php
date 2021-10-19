@@ -15,5 +15,5 @@ abstract class BaseController
 		$this->model = new TasksModel();
 		$this->view = new View($this->model);
 	}
-	abstract public function createPage();
+	abstract public function createPage($param = '');
 }

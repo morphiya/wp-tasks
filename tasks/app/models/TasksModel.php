@@ -48,9 +48,26 @@ class TasksModel implements \SplSubject
 		$this->notify();
 	}
 
-	private function insertTask() {
+	public function editTask($id) {
+		$this->selectTask($id);
+		$this->modelState['page'] = 'edit';
+		$this->notify();
+	}
+
+	public function updateTask() {
+		$this->insertTask($_POST['id']);
+		$this->listTask();
+	}
+
+	public function deleteTask() {
+		wp_delete_post($_POST['id']);
+		$this->listTask();
+	}
+
+	private function insertTask($postID = '') {
+		$id = $postID == '' ? $this->modelState['id'] : intval($postID);
 		$post_data = array(
-			'ID'		 => $this->modelState['id'],
+			'ID'		 => $id,
 			'post_type'  => 'tasks',
 			'post_title' => sanitize_text_field($_POST['taskName']),
 			'post_status'=> 'publish',
@@ -64,8 +81,7 @@ class TasksModel implements \SplSubject
 	}
 
 	private function selectTask($id = '') {
-		$query = new \WP_Query(['post_type' => 'tasks']);
-
+		$query = new \WP_Query(['post_type' => 'tasks', 'p' => $id]);
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			$result = get_post();
@@ -77,6 +93,4 @@ class TasksModel implements \SplSubject
 			];
 		}
 	}
-
-
 }
