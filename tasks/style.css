@@ -1,0 +1,90 @@
+/**
+ * Theme Name:  tasks
+ * Description: simple to-do list
+ *
+ * Author:      morph
+ */
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/*------------------------------------------------------------------------------*/
+a, a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+/*------------------------------------------------------------------------------*/
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #eee;
+    color: #04364A
+}
+.container {
+    height: 100%;
+}
+.form-control:focus,
+.btn-tasks:focus,
+.form-check-input:focus {
+    border-color: rgba(94, 166, 160, 0.78);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(93, 198, 168, 0.4);
+    outline: 0 none;
+}
+
+
+.site-header {
+    background: #006055;
+    font-family: "Lexend Zetta", sans-serif;
+    font-weight: bold;
+    color: #fff;
+    padding: 30px 0;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.site-footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+.site-logo {color: #fff;}
+.site-logo:hover {color: #fff;}
+
+
+.container-home {max-width: 300px;}
+.container-edit {max-width: 500px;}
+.container-list {max-width: 700px;}
+
+
+.col-home {min-width: 100%;}
+.row-mb-15 {margin-bottom: 15px;}
+.row-mb-10 {margin-bottom: 15px;}
+
+
+.btn-tasks {
+    min-width: 100%;
+    margin-bottom: 20px;
+    background-color: #09AC9C;
+    border-color: #09AC9C;
+}
+.btn-tasks:hover {
+    background: #426776;
+    border-color: #426776;
+}
+.btn-tasks:focus {
+    background: #426776;
+    border-color: #426776;
+}
+.form-check-input:checked {
+    background-color: #09AC9C;
+    border-color: #09AC9C
+}
+
+
+.table-col-20 {width: 20%}
+.table-col-30 {width: 30%}
+.table-col-50 {width: 50%}
+th img {margin-left: 10px;}
+th img:hover {background-color: #ddd;}
+.task-link{color: black;}
+.task-link:hover{color: #426776;}
