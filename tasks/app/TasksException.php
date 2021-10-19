@@ -2,7 +2,7 @@
 
 namespace app;
 
-class MyException extends \Exception {
+class TasksException extends \Exception {
 	protected array $messages = [
 		0 => 'This page isn`t exist',
 		1 => 'Site under maintenance',
