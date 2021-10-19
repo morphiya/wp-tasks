@@ -55,3 +55,31 @@ function create_tasks_posttype() {
 
 	register_post_type( 'tasks', $args );
 }
+
+// Routing
+add_action('create_route', 'create_route_action');
+function create_route_action() {
+	require_once "app/autoloader.php";
+	$requestURI = explode('/', $_SERVER['REQUEST_URI']);
+	if ($requestURI[1] == '') {
+		get_template_part('templates/content-home');
+	}
+	else {
+		$controllerName = 'app\controllers\\' . ucfirst($requestURI[1]) . 'Controller';
+		try {
+			$controller = new $controllerName();
+			$controller->createPage();
+		} catch (\app\TasksException $e) {
+			get_template_part('templates/content-404');
+		}
+	}
+}
+
+// change title page in header
+add_filter( 'document_title_parts', 'filter_change_title_page' );
+function filter_change_title_page( $title ){
+	$requestURI = explode('/', $_SERVER['REQUEST_URI']);
+	$title['title'] = ucfirst($requestURI[1]) . ' Task';
+
+	return $title;
+}
