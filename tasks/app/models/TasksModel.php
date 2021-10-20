@@ -93,4 +93,16 @@ class TasksModel implements \SplSubject
 			];
 		}
 	}
+
+	public function setTaskState(string $newState) {
+		$post_data = array(
+			'ID'		 => $_POST['ajax_taskID'],
+			'meta_input' => [
+				'state'	  => $newState
+			]
+		);
+		wp_update_post($post_data);
+
+		return "\n The new state set in db";
+	}
 }

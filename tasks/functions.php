@@ -100,7 +100,15 @@ add_action('wp_ajax_nopriv_complete', 'complete_task');
 
 // Processing ajax-query
 function complete_task() {
-	$response = $_POST['testMessage'];
+	$taskID = $_POST['ajax_taskID'];
+	$checkboxState = $_POST['ajax_checkboxState'];
+
+	$response = "The new value of checkbox#".$taskID." is: ".$checkboxState;
+
+	require_once "app/autoloader.php";
+	$model = new app\models\TasksModel();
+	$response .= $model->setTaskState($checkboxState);
+
 	echo $response;
 	wp_die();
 }

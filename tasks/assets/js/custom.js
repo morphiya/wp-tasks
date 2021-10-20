@@ -15,7 +15,8 @@ jQuery(document).ready( function( $ ){
             method: 'post',
             data: {
                 action: 'complete',
-                testMessage: testMessage
+                ajax_taskID: taskId,
+                ajax_checkboxState: checkboxState
             },
             success: function (response) {
                 console.log(response)
