@@ -81,14 +81,21 @@ class TasksModel implements \SplSubject
 	}
 
 	private function selectTask($id = '') {
-		$query = new \WP_Query(['post_type' => 'tasks', 'p' => $id]);
+		$query = new \WP_Query(['post_type' => 'tasks',
+								'p' => $id,
+								'orderby' => 'dueDate',
+        						'order' => 'ASC']);
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			$result = get_post();
+
+			$date = get_post_meta($result->ID, 'dueDate', true);
+			$date = date('m / d / Y', strtotime($date));
+
 			$this->modelState['listTasks'][] = [
 				'id' => $result->ID,
 				'name' => $result->post_title,
-				'dueDate' => get_post_meta($result->ID, 'dueDate', true),
+				'dueDate' => $date,
 				'state' => get_post_meta($result->ID, 'state', true)
 			];
 		}
