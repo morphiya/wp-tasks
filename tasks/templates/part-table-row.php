@@ -6,7 +6,8 @@
 	<td><?php echo $args['dueDate'];?></td>
 	<td>
 		<div class="form-check">
-            <?php echo '<input class="form-check-input" type="checkbox"' . checked( $args['state'], 'true', false) . '>';?>
+            <?php echo '<input class="form-check-input" value="'. $args['id'] .'" 
+                         type="checkbox"' . checked( $args['state'], 'true', false) . '>';?>
 		</div>
 	</td>
 </tr>
