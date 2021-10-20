@@ -4,6 +4,7 @@
 add_action ('wp_enqueue_scripts', 'style_theme');
 function style_theme () {
 	wp_enqueue_style('bootstrap-css', get_template_directory_uri().'/assets/css/bootstrap.min.css');
+	wp_enqueue_style('jquery-ui-css', get_template_directory_uri().'/assets/css/jquery-ui.min.css');
 	wp_enqueue_style('style', get_stylesheet_uri());
 }
 
@@ -11,7 +12,8 @@ function style_theme () {
 add_action ('wp_footer', 'script_theme');
 function script_theme () {
 	wp_enqueue_script('bootstrap-js', get_template_directory_uri().'/assets/js/bootstrap.bundle.min.js');
-	//wp_enqueue_script('example', get_template_directory_uri() . '/assets/js/example.js');
+	wp_enqueue_script('sort', get_template_directory_uri().'/assets/js/sort.js', array('jquery'));
+
 }
 
 // register custom post type "tasks"
@@ -116,8 +118,9 @@ function complete_task() {
 // JQuery script
 add_action( 'wp_enqueue_scripts', 'my_assets');
 function my_assets() {
-	wp_enqueue_script('custom', get_template_directory_uri().'/assets/js/custom.js', array('jquery'));
-	wp_enqueue_script('sort', get_template_directory_uri().'/assets/js/sort.js', array('jquery'));
+	wp_enqueue_script('custom', get_template_directory_uri().'/assets/js/ajax-checkbox.js', array('jquery'));
+	wp_enqueue_script('jquery-ui', get_template_directory_uri().'/assets/js/jquery-ui.min.js', array('jquery'));
+	wp_enqueue_script('custom-ui', get_template_directory_uri().'/assets/js/jquery-ui-elements.js', array('jquery', 'jquery-ui'));
 
 	wp_localize_script('custom', 'tasksAjax', array(
 		'ajaxurl' => admin_url('admin-ajax.php')
