@@ -1,15 +1,15 @@
 jQuery(document).ready( function( $ ) {
-    let table = $('#taskTable');
-    let tbody = $('#taskTBody');
+
+    let list = $('#task-list');
 
     $('#nameCol').click(function () {
-        tbody.find('tr').sort(function(a, b) {
+        list.find('.task-list-row').sort(function(a, b) {
            if($('#nameOrder').val()=='asc') {
-               return $('td:first', a).text().localeCompare($('td:first', b).text());
+               return $('.task-list-col:first', a).text().localeCompare($('.task-list-col:first', b).text());
            } else {
-               return $('td:first', b).text().localeCompare($('td:first', a).text());
+               return $('.task-list-col:first', b).text().localeCompare($('.task-list-col:first', a).text());
            }
-        }).appendTo(tbody);
+        }).appendTo(list);
 
         let sortOrder=$('#nameOrder').val();
         if(sortOrder=="asc") {
@@ -21,13 +21,13 @@ jQuery(document).ready( function( $ ) {
     });
 
     $('#dateCol').click(function() {
-        tbody.find('tr').sort(function(a, b) {
+        list.find('.task-list-row').sort(function(a, b) {
             if($('#dateOrder').val()=='asc') {
-                return $('td:first', a).text().localeCompare($('td:first', b).text());
+                return $('.task-list-col:first', a).text().localeCompare($('.task-list-col:first', b).text());
             } else {
-                return $('td:first', b).text().localeCompare($('td:first', a).text());
+                return $('.task-list-col:first', b).text().localeCompare($('.task-list-col:first', a).text());
             }
-        }).appendTo(tbody);
+        }).appendTo(list);
 
         let sortOrder=$('#dateOrder').val();
         if(sortOrder=="asc") {

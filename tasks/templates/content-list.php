@@ -12,19 +12,15 @@
         </div>
     </fieldset>
 
-	<table class="table table-hover" id="taskTable">
-		<thead>
-		<tr>
-			<th scope="col" class="table-col-50" id="nameCol"> Name </th>
-			<th scope="col" class="table-col-30" id="dateCol"> Due Date </th>
-			<th scope="col" class="table-col-20" id="stateCol"> Completed</th>
-		</tr>
-		</thead>
-		<tbody id="taskTBody">
-		    <?php do_action('render_table_row', $args); ?>
-		</tbody>
-	</table>
+    <div id="task-list">
+        <div class="row task-list-title">
+            <div class="col-6 task-list-col task-list-link" id="nameCol"> Name </div>
+            <div class="col-4 task-list-col task-list-link" id="dateCol"> Due Date </div>
+            <div class="col-2 task-list-col" id="stateCol"> Completed </div>
+        </div>
+		<?php do_action('render_table_row', $args); ?>
 
-    <input type="hidden" id="nameOrder" value="asc">
-    <input type="hidden" id="dateOrder" value="asc">
+        <input type="hidden" id="nameOrder" value="asc">
+        <input type="hidden" id="dateOrder" value="asc">
+    </div>
 </div>
