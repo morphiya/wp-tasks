@@ -5,8 +5,10 @@ jQuery(document).ready( function( $ ){
 
         if($(this).is(':checked')) {
             checkboxState = 'true'
+            $('tr[id="'+ taskId +'"]').removeClass().addClass('done')
         } else {
             checkboxState = 'false'
+            $('tr[id="'+ taskId +'"]').removeClass().addClass('not-done')
         }
 
         let testMessage = "The new value of checkbox#"+taskId+" is: "+checkboxState

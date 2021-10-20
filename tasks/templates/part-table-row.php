@@ -1,5 +1,5 @@
 
-<tr>
+<tr class="<?php echo $args['state'] === 'true' ? 'done' : 'not-done' ?>" id="<?php echo $args['id'] ?>">
 	<td>
 		<a class="task-link" href="<?php echo get_site_url() . '/edit/' . $args['id']; ?>"><?php echo $args['name'];?></a>
 	</td>
