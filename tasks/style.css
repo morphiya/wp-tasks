@@ -88,3 +88,8 @@ th img {margin-left: 10px;}
 th img:hover {background-color: #ddd;}
 .task-link{color: black;}
 .task-link:hover{color: #426776;}
+
+#nameCol:hover, #dateCol:hover {
+    text-decoration: underline;
+    color: #0c4128;
+}

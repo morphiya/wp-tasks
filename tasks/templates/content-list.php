@@ -1,29 +1,17 @@
 <div class="container container-list">
-	<table class="table table-hover">
+	<table class="table table-hover" id="taskTable">
 		<thead>
 		<tr>
-			<th scope="col" class="table-col-50"> Name
-				<a href="#">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/sort-down.svg"
-						 width="20"
-						 height="20"
-						 alt="sort_down">
-				</a>
-			</th>
-
-			<th scope="col" class="table-col-30"> Due Date </th>
-			<th scope="col" class="table-col-20"> Completed
-				<a href="#">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/sort-down.svg"
-						 width="20"
-						 height="20"
-						 alt="sort_down">
-				</a>
-			</th>
+			<th scope="col" class="table-col-50" id="nameCol"> Name </th>
+			<th scope="col" class="table-col-30" id="dateCol"> Due Date </th>
+			<th scope="col" class="table-col-20" id="stateCol"> Completed</th>
 		</tr>
 		</thead>
-		<tbody>
+		<tbody id="taskTBody">
 		    <?php do_action('render_table_row', $args); ?>
 		</tbody>
 	</table>
+
+    <input type="hidden" id="nameOrder" value="asc">
+    <input type="hidden" id="dateOrder" value="asc">
 </div>

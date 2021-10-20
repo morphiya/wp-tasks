@@ -117,8 +117,9 @@ function complete_task() {
 add_action( 'wp_enqueue_scripts', 'my_assets');
 function my_assets() {
 	wp_enqueue_script('custom', get_template_directory_uri().'/assets/js/custom.js', array('jquery'));
+	wp_enqueue_script('sort', get_template_directory_uri().'/assets/js/sort.js', array('jquery'));
+
 	wp_localize_script('custom', 'tasksAjax', array(
-		'ajaxurl' => admin_url('admin-ajax.php'),
-		'name'	=> wp_get_current_user()->display_name
+		'ajaxurl' => admin_url('admin-ajax.php')
 	));
 }
