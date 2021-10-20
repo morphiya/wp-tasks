@@ -5,9 +5,9 @@ jQuery(document).ready( function( $ ) {
     $('#nameCol').click(function () {
         list.find('.task-list-row').sort(function(a, b) {
            if($('#nameOrder').val()=='asc') {
-               return $('.task-list-col:first', a).text().localeCompare($('.task-list-col:first', b).text());
+               return $('.col-6:first', a).text().localeCompare($('.col-6:first', b).text());
            } else {
-               return $('.task-list-col:first', b).text().localeCompare($('.task-list-col:first', a).text());
+               return $('.col-6:first', b).text().localeCompare($('.col-6:first', a).text());
            }
         }).appendTo(list);
 
@@ -23,9 +23,9 @@ jQuery(document).ready( function( $ ) {
     $('#dateCol').click(function() {
         list.find('.task-list-row').sort(function(a, b) {
             if($('#dateOrder').val()=='asc') {
-                return $('.task-list-col:first', a).text().localeCompare($('.task-list-col:first', b).text());
+                return $('.col-4:first', a).text().localeCompare($('.col-4:first', b).text());
             } else {
-                return $('.task-list-col:first', b).text().localeCompare($('.task-list-col:first', a).text());
+                return $('.col-4:first', b).text().localeCompare($('.col-4:first', a).text());
             }
         }).appendTo(list);
 
