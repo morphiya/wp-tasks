@@ -13,6 +13,7 @@ add_action ('wp_footer', 'script_theme');
 function script_theme () {
 	wp_enqueue_script('bootstrap-js', get_template_directory_uri().'/assets/js/bootstrap.bundle.min.js');
 	wp_enqueue_script('sort', get_template_directory_uri().'/assets/js/sort.js', array('jquery'));
+	wp_enqueue_script('filter', get_template_directory_uri().'/assets/js/filter.js', array('jquery'));
 
 }
 
