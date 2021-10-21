@@ -12,6 +12,8 @@
 		<label for="taskDateInput" class="col-form-label">Due Date</label>
 	</div>
 	<div class="col-6">
-		<input type="date" name="dueDate" id="taskDateInput" class="form-control" value="<?php echo $args['listTasks'][0]['dueDate'] ?? $args['name'];?>">
+        <input type="text" id="datepicker" name="dueDate" class="form-control"
+               value="<?php echo $args['listTasks'][0]['dueDate'] ?? $args['name'];?>">
+<!--		<input type="date" name="dueDate" id="taskDateInput" class="form-control" value="--><?php //echo $args['listTasks'][0]['dueDate'] ?? $args['name'];?><!--">-->
 	</div>
 </div> <!-- task due date row end -->

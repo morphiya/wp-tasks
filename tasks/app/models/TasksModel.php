@@ -66,6 +66,10 @@ class TasksModel implements \SplSubject
 
 	private function insertTask($postID = '') {
 		$id = $postID == '' ? $this->modelState['id'] : intval($postID);
+
+		$date = $_POST['dueDate'];
+		$date = date('Y-m-d', strtotime($date));
+
 		$post_data = array(
 			'ID'		 => $id,
 			'post_type'  => 'tasks',
@@ -73,7 +77,7 @@ class TasksModel implements \SplSubject
 			'post_status'=> 'publish',
 			'post_author'=> 1,
 			'meta_input' => [
-				'dueDate' => $_POST['dueDate'],
+				'dueDate' => $date,
 				'state'	  => 'false'
 			]
 		);
@@ -81,10 +85,16 @@ class TasksModel implements \SplSubject
 	}
 
 	private function selectTask($id = '') {
-		$query = new \WP_Query(['post_type' => 'tasks',
-								'p' => $id,
-								'orderby' => 'dueDate',
-        						'order' => 'ASC']);
+		$arrForQuery = [
+			'post_type' => 'tasks',
+			'p'			=> $id,
+			'order' => 'ASC',
+			'orderby' => 'meta_value',
+			'meta_query' => [
+				['key' => 'dueDate']
+			]
+		];
+		$query = new \WP_Query($arrForQuery);
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			$result = get_post();
